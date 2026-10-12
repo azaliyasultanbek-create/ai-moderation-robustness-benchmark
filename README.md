@@ -185,3 +185,10 @@ Full bibliography: [`docs/references.bib`](docs/references.bib).
 
 Code is released under the [MIT License](LICENSE). The TweetEval data and the
 pre-trained model keep their original licenses and are not redistributed here.
+
+## Contributions
+
+| Author | Contribution |
+|---|---|
+| Zeinep Egemkul | Research design, hypotheses (H0/H1), variable matrix and metrics, methodology card |
+| Azaliya Sultanbek | Literature review, repository setup, Docker environment, README |
