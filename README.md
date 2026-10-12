@@ -108,10 +108,9 @@ Full factorial design: **3 models × 5 text conditions = 15 runs**, each on the 
 ## Quickstart Guide (smoke test, ~1 minute)
 
 ```bash
-git clone https://github.com/zeinepka07/ai-moderation-robustness-benchmark.git && cd ai-moderation-robustness-benchmark
+git clone https://github.com/azaliyasultanbek-create/ai-moderation-robustness-benchmark.git && cd ai-moderation-robustness-benchmark
 docker build -t ai-mod-bench .
 docker run --rm -v "${PWD}/results:/app/results" ai-mod-bench
-```
 
 The run prints a summary table and writes `results/smoke_test_<timestamp>/`.
 On Windows `cmd.exe` replace `${PWD}` with `%cd%` (PowerShell works as is).
