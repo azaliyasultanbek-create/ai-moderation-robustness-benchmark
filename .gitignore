@@ -1,0 +1,53 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- Virtual environments ---
+.venv/
+venv/
+env/
+.conda/
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+
+# --- Data: only the micro sample is versioned ---
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+*.parquet
+*.zip
+*.tar.gz
+
+# --- Experiment outputs, logs, model weights ---
+results/*
+!results/.gitkeep
+logs/
+*.log
+models/
+*.bin
+*.safetensors
+*.pt
+*.pth
+*.onnx
+*.joblib
+*.pkl
+.cache/
+
+# --- Secrets ---
+.env
+*.key
+*.pem
+hf_token*
+
+# --- IDE / OS ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini

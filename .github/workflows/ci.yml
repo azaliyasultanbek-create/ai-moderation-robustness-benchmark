@@ -1,0 +1,35 @@
+# Continuous integration: on every push GitHub builds the Docker image
+# and runs the Quickstart smoke test + unit tests inside the container.
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  docker-smoke-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t ai-mod-bench .
+
+      - name: Run Quickstart smoke test (data/sample)
+        run: |
+          mkdir -p results
+          docker run --rm -v "${{ github.workspace }}/results:/app/results" ai-mod-bench
+
+      - name: Run unit tests
+        run: docker run --rm --entrypoint python ai-mod-bench -m unittest discover -s tests -v
+
+      - name: Upload smoke-test log and metrics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: smoke-test-results
+          path: results/
+          if-no-files-found: warn

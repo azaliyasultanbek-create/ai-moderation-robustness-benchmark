@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: "If you use this benchmark, please cite it as below."
+title: "Robustness of AI-Based Content Moderation to Character-Level Obfuscation of Harmful Content"
+authors:
+  - family-names: Sultanbek
+    given-names: Azaliya
+    affiliation: Narxoz University
+  - family-names: Egemkul
+    given-names: Zeinep
+    affiliation: Narxoz University
+version: 0.1.0
+date-released: 2026-10-18
+license: MIT
+repository-code: "https://github.com/zeinepka07/ai-moderation-robustness-benchmark"

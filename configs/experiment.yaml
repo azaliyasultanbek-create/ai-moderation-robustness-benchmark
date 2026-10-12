@@ -1,0 +1,59 @@
+# Full Week-7 experiment: TweetEval-hate (SemEval-2019 HatEval, English).
+# Prerequisites: `python scripts/download_data.py` and requirements-transformer.txt
+# (or the Docker image built with --build-arg WITH_TRANSFORMER=1).
+
+experiment:
+  name: tweeteval_hate_full
+  seed: 42                     # controlled: fixes perturbations, bootstrap, model init
+  output_dir: results          # one sub-folder per run: results/<name>_<timestamp>/
+  log_level: INFO
+
+data:
+  train_path: data/raw/tweeteval_hate/train.csv
+  test_path: data/raw/tweeteval_hate/test.csv
+  text_column: text
+  label_column: label          # 1 = harmful, 0 = benign
+  max_train_samples: null
+  max_test_samples: null
+
+# Independent variable 1: detection model / algorithm
+models:
+  - name: tfidf_word_lr        # BASELINE: standard un-optimised word n-gram classifier
+    type: tfidf_lr
+    params: {analyzer: word, ngram_range: [1, 2], max_features: 50000, C: 1.0, class_weight: balanced}
+  - name: tfidf_char_lr        # character n-grams (expected to be more robust)
+    type: tfidf_lr
+    params: {analyzer: char_wb, ngram_range: [2, 5], max_features: 100000, C: 1.0, class_weight: balanced}
+  - name: roberta_hate         # pre-trained transformer moderation model (needs internet + extras)
+    type: hf_pipeline
+    enabled: true
+    params:
+      model_id: cardiffnlp/twitter-roberta-base-hate-latest
+      positive_labels: [HATE]
+      max_length: 128
+
+# Independent variable 2: character-level obfuscation (none = control condition)
+perturbations:
+  types: [none, leetspeak, char_insert, homoglyph, char_swap]
+  word_rate: 0.5               # share of eligible words that are obfuscated
+  min_word_length: 4           # only words with >= 4 letters are eligible
+  apply_to: all                # all | harmful_only
+
+evaluation:
+  threshold: 0.5               # controlled decision threshold on P(harmful)
+  batch_size: 32
+  warmup_batches: 1            # untimed warm-up batches before latency measurement
+  timeout_s_per_condition: 1800
+  bootstrap_iterations: 1000
+  alpha: 0.05
+  min_effect_pp: 5.0           # smallest recall drop (pp) treated as practically meaningful
+
+# Guardrail metrics: a condition is acceptable only if all of these hold
+guardrails:
+  max_fpr: 0.20                # at most 20% of benign posts wrongly flagged
+  max_latency_p95_ms: 100      # p95 latency per text on CPU
+  max_peak_ram_mb: 4096
+  max_error_rate: 0.0          # no failed / timed-out inferences
+
+runtime:
+  num_threads: 4               # controlled CPU threads for torch

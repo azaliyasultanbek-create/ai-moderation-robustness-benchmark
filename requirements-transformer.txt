@@ -1,0 +1,26 @@
+# Optional: pre-trained transformer model (roberta_hate) - exact pins, CPU only.
+# Install AFTER requirements.txt. In Docker torch is taken from the CPU wheel index:
+#   pip install --no-deps --index-url https://download.pytorch.org/whl/cpu torch==2.6.0
+torch==2.6.0
+filelock==3.17.0
+typing_extensions==4.12.2
+sympy==1.13.1
+mpmath==1.3.0
+networkx==3.4.2
+Jinja2==3.1.5
+MarkupSafe==3.0.2
+fsspec==2024.12.0
+setuptools==75.8.0
+transformers==4.49.0
+tokenizers==0.21.0
+huggingface-hub==0.28.1
+safetensors==0.5.2
+regex==2024.11.6
+tqdm==4.67.1
+packaging==24.2
+requests==2.32.3
+certifi==2025.1.31
+charset-normalizer==3.4.1
+idna==3.10
+urllib3==2.3.0
+colorama==0.4.6 ; sys_platform == "win32"
