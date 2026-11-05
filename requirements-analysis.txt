@@ -1,0 +1,5 @@
+# Extra dependencies for TASK 3 (analysis notebook and figures), on top of requirements.txt.
+matplotlib==3.11.2
+seaborn==0.13.2
+pillow>=10        # only needed to check PNG dpi
+jupyter           # notebook runner (jupyter nbconvert --execute ...)

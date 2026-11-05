@@ -1,0 +1,31 @@
+family,model,comparison,recall_first,recall_second,delta_pp,b_lost,c_gained,p_value,delta_ci_low_pp,delta_ci_high_pp,p_holm,supported
+H1,tfidf_word_lr,tweeteval: clean vs leetspeak,0.952077,0.86901,8.30671,117,13,2.15711e-22,6.54952,9.90415,1.9414e-21,True
+H2,tfidf_word_lr,tweeteval leetspeak: normalized vs raw,0.951278,0.86901,8.22684,118,15,2.54738e-21,6.46965,9.90415,3.05686e-20,True
+H1,tfidf_word_lr,tweeteval: clean vs char_insert,0.952077,0.848243,10.3834,149,19,1.66649e-26,8.38658,12.3003,1.83314e-25,True
+H2,tfidf_word_lr,tweeteval char_insert: normalized vs raw,0.951278,0.848243,10.3035,150,21,1.64759e-25,8.30671,12.2224,2.14186e-24,True
+H1,tfidf_word_lr,tweeteval: clean vs homoglyph,0.952077,0.863419,8.86581,129,18,3.52284e-22,7.10663,10.7827,2.81827e-21,True
+H2,tfidf_word_lr,tweeteval homoglyph: normalized vs raw,0.951278,0.863419,8.78594,130,20,2.99736e-21,6.94888,10.7029,3.2971e-20,True
+H1,tfidf_word_lr,tweeteval: clean vs char_swap,0.952077,0.865016,8.70607,124,15,7.95025e-23,6.94888,10.5431,7.95025e-22,True
+H2,tfidf_word_lr,tweeteval char_swap: normalized vs raw,0.859425,0.865016,-0.559105,10,17,0.938961,-1.35783,0.159744,1,False
+H1,tfidf_word_lr,noisyhate: clean vs human_perturbed,0.214339,0.178491,3.58476,70,22,2.67407e-07,2.24048,5.00373,5.34814e-07,False
+H2,tfidf_word_lr,noisyhate human_perturbed: normalized vs raw,0.186706,0.178491,0.821509,39,28,0.110774,-0.300597,1.94175,0.443097,False
+H1,tfidf_char_lr,tweeteval: clean vs leetspeak,0.976038,0.793131,18.2907,229,0,1.15913e-69,16.1342,20.4473,1.73869e-68,True
+H2,tfidf_char_lr,tweeteval leetspeak: normalized vs raw,0.974441,0.793131,18.131,227,0,4.63651e-69,15.9744,20.2875,6.95476e-68,True
+H1,tfidf_char_lr,tweeteval: clean vs char_insert,0.976038,0.926518,4.95208,64,2,2.99782e-17,3.75399,6.23003,1.79869e-16,False
+H2,tfidf_char_lr,tweeteval char_insert: normalized vs raw,0.974441,0.926518,4.79233,62,2,1.12811e-16,3.59425,6.07029,1.0153e-15,False
+H1,tfidf_char_lr,tweeteval: clean vs homoglyph,0.976038,0.916933,5.91054,78,4,3.80715e-19,4.47284,7.34824,2.665e-18,True
+H2,tfidf_char_lr,tweeteval homoglyph: normalized vs raw,0.974441,0.916933,5.7508,76,4,1.37889e-18,4.3131,7.1885,1.37889e-17,True
+H1,tfidf_char_lr,tweeteval: clean vs char_swap,0.976038,0.817891,15.8147,199,1,1.25083e-58,13.8179,17.8115,1.75116e-57,True
+H2,tfidf_char_lr,tweeteval char_swap: normalized vs raw,0.816294,0.817891,-0.159744,8,10,0.759659,-0.800719,0.479233,1,False
+H1,tfidf_char_lr,noisyhate: clean vs human_perturbed,0.0970874,0.0702016,2.68857,39,3,2.8158e-09,1.79052,3.65945,1.12632e-08,False
+H2,tfidf_char_lr,noisyhate human_perturbed: normalized vs raw,0.0799104,0.0702016,0.970874,21,8,0.0120598,0.224048,1.79238,0.0723586,False
+H1,roberta_hate,tweeteval: clean vs leetspeak,0.959265,0.833067,12.6198,170,12,3.33831e-37,10.621,14.5367,4.3398e-36,True
+H2,roberta_hate,tweeteval leetspeak: normalized vs raw,0.947284,0.833067,11.4217,170,27,7.47589e-27,9.26518,13.5783,1.04662e-25,True
+H1,roberta_hate,tweeteval: clean vs char_insert,0.959265,0.929712,2.95527,55,18,8.45681e-06,1.67732,4.23522,8.45681e-06,False
+H2,roberta_hate,tweeteval char_insert: normalized vs raw,0.947284,0.929712,1.75719,60,38,0.01668,0.239617,3.35463,0.0834001,False
+H1,roberta_hate,tweeteval: clean vs homoglyph,0.959265,0.895367,6.38978,95,15,1.0708e-15,4.79233,7.98722,5.35402e-15,True
+H2,roberta_hate,tweeteval homoglyph: normalized vs raw,0.947284,0.895367,5.19169,101,36,1.25516e-08,3.35463,6.94888,1.00413e-07,True
+H1,roberta_hate,tweeteval: clean vs char_swap,0.959265,0.855431,10.3834,144,14,1.15929e-28,8.54633,12.2204,1.39115e-27,True
+H2,roberta_hate,tweeteval char_swap: normalized vs raw,0.850639,0.855431,-0.479233,38,44,0.780147,-1.91693,0.798722,1,False
+H1,roberta_hate,noisyhate: clean vs human_perturbed,0.131441,0.0799104,5.1531,117,48,3.91707e-08,3.13667,6.8708,1.17512e-07,True
+H2,roberta_hate,noisyhate human_perturbed: normalized vs raw,0.113518,0.0799104,3.36072,83,38,2.63367e-05,1.64115,4.85437,0.000184357,False

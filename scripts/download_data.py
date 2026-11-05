@@ -29,10 +29,14 @@ def fetch(url: str) -> list[str]:
 
 
 def main() -> int:
+    # Optional: --local <dir> reads datasets/hate/ from a clone of github.com/cardiffnlp/tweeteval
+    # (use it when raw.githubusercontent.com is blocked but `git clone` works).
+    local = Path(sys.argv[sys.argv.index("--local") + 1]) if "--local" in sys.argv else None
+    read = (lambda name: (local / name).read_text(encoding="utf-8").splitlines()) if local else (lambda name: fetch(f"{BASE}/{name}"))
     OUT.mkdir(parents=True, exist_ok=True)
     for split, prefix in SPLITS.items():
-        texts = fetch(f"{BASE}/{prefix}_text.txt")
-        labels = fetch(f"{BASE}/{prefix}_labels.txt")
+        texts = read(f"{prefix}_text.txt")
+        labels = read(f"{prefix}_labels.txt")
         if len(texts) != len(labels):
             print(f"[error] {split}: {len(texts)} texts vs {len(labels)} labels", file=sys.stderr)
             return 1
